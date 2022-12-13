@@ -11,5 +11,5 @@ export class PrecioCombustibleComponent {
   @Input() precio_medio_actual: string | undefined;
   @Input() precio_medio_ayer: string | undefined;
   @Input() tendencia: string | undefined;
-  @Input() photo: string = "...";
+  @Input() diferencia: string | undefined;
 }
