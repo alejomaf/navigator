@@ -1,3 +1,4 @@
 export interface Carretera {
-    congestion: number,
+    congestion: string,
+    accidentes: string,
 }
