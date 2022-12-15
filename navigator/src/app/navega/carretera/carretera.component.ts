@@ -6,7 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./carretera.component.css']
 })
 export class CarreteraComponent {
-  @Input() nombre_carretera: string = "Busca la carretera";
-  @Input() congestion: string | undefined;
-  @Input() accidentes: string | undefined;
+  @Input() carretera: string = "Busca la carretera";
+  @Input() kmOrigen: string | undefined;
+  @Input() kmDestino: string | undefined;
+  @Input() sentido: string | undefined;
+  @Input() descripcion: string | undefined;
+  @Input() advertencia: string | undefined;
 }

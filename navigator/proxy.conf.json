@@ -4,5 +4,17 @@
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
+    },
+    "/info-incidentes/carretera/*": {
+        "target": "http://localhost:8000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/info-incidentes*": {
+        "target": "http://localhost:8000",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     }
 }

@@ -5,6 +5,9 @@ pip install fastapi
 pip install uvicorn
 pip install bs4
 pip install tweepy
+pip install requests
+pip install lxml
+pip install html.parser
 
 echo "Descargando todas las dependencias para Node JS"
 npm install navigator

@@ -8,6 +8,8 @@ import { NavegaComponent } from './navega/navega.component';
 import { PrecioCombustibleComponent } from './inicio/precio-combustible/precio-combustible.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarreteraComponent } from './navega/carretera/carretera.component';
+import { AccidentesComponent } from './accidentes/accidentes.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { CarreteraComponent } from './navega/carretera/carretera.component';
     NavegaComponent,
     PrecioCombustibleComponent,
     CarreteraComponent,
+    AccidentesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

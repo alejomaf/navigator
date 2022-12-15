@@ -1,4 +1,8 @@
 export interface Carretera {
-    congestion: string,
-    accidentes: string,
+    carretera: string,
+    kmOrigen: string,
+    kmDestino: string,
+    descripcion: string,
+    advertencia: string,
+    sentido: string,
 }

@@ -1,6 +1,10 @@
 <nav class="navbar navbar-light navbar-expand-lg">
     <a class="navbar-brand">Búsqueda</a>
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <input [formControl]="busqueda" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button (click)="buscarCarretera()" class="btn btn-outline-success my-2 my-sm-0" style="margin-left: 10px;"
+        type="submit">Search</button>
 </nav>
-<app-carretera></app-carretera>
+
+<app-carretera *ngIf="accidente.carretera!=''" carretera='{{accidente.carretera}}' kmOrigen='{{accidente.kmOrigen}}'
+    kmDestino='{{accidente.kmDestino}}' sentido='{{accidente.sentido}}' descripcion='{{accidente.descripcion}}'
+    advertencia='{{accidente.advertencia}}'></app-carretera>

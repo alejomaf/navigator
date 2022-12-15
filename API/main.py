@@ -5,6 +5,7 @@ import json
 # import the wrappers
 import wrappers.gasolina as gasolina
 import wrappers.twitterWrapper as twitterWrapper
+import wrappers.incidentesWrapper as incidentesW
 
 
 app = FastAPI(title="API de datos masivos encadenados",
@@ -13,7 +14,6 @@ app = FastAPI(title="API de datos masivos encadenados",
     estado de las carreteras''',
               version="0.1.0",
               )
-
 # API Gasolina
 
 
@@ -51,6 +51,21 @@ def get_gasolina_diferencia():
             "tendencia": "subida" if lista_precios[i]["hoy"] - lista_precios[i]["ayer"] > 0 else "bajada"
         })
     return lista_result
+
+
+@app.get("/info-incidentes")
+def get_incidentes():
+    return json.loads(incidentesW.extractData())["accident"]
+
+
+@app.get("/info-incidentes/carretera/{id}")
+def get_incidentes_carretera(id: str):
+    list_result = []
+    incidencias = json.loads(incidentesW.extractData())["accident"]
+    for each in incidencias:
+        if each["carretera"] == id:
+            list_result.append(each)
+    return list_result
 
 
 if __name__ == "__main__":

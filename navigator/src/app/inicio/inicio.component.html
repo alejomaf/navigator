@@ -4,10 +4,12 @@
         <p class="subtitulo" style="align-self: right;">Viaje de manera óptima</p>
     </div>
 </div>
-<div *ngFor="let combustible of combustibles">
-    <div class="d-flex justify-content-center my-3">
-        <app-precio-combustible tipo_combustible='{{combustible.tipo}}' precio_medio_actual='{{combustible.precio_hoy}}'
-            precio_medio_ayer='{{combustible.precio_ayer}}' tendencia='{{combustible.tendencia}}'
-            diferencia='{{combustible.diferencia}}'></app-precio-combustible>
+<div class="d-flex flex-wrap align-content-stretch" style="margin-left: 7%; margin-right: 7%;">
+    <div *ngFor="let combustible of combustibles">
+        <div class="d-flex justify-content-center my-3">
+            <app-precio-combustible tipo_combustible='{{combustible.tipo}}'
+                precio_medio_actual='{{combustible.precio_hoy}}' precio_medio_ayer='{{combustible.precio_ayer}}'
+                tendencia='{{combustible.tendencia}}' diferencia='{{combustible.diferencia}}'></app-precio-combustible>
+        </div>
     </div>
 </div>

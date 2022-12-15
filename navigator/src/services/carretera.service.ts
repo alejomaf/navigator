@@ -7,19 +7,31 @@ import { Carretera } from 'src/interfaces/carretera';
 })
 export class CarreteraService {
 
-  _url = "api/carretera"
+  _urlAccidentes = "info-incidentes"
+  _urlBusquedaAccidentes = "info-incidentes/carretera/"
 
   constructor(private http: HttpClient) { }
 
-  async getCarretera(nombreCarretera: string): Promise<Carretera|null> {
-    var carretera : Carretera | null;
-    //let header = new HttpHeaders(({ "usertoken": this.userService.getToken() }));
-    return new Promise<Carretera|null>((resolve) => this.http.get(this._url + "/" + nombreCarretera).subscribe((
+  async getAccidentes(): Promise<Carretera[] | null> {
+    var carreteras: Carretera[] | null;
+    return new Promise<Carretera[] | null>((resolve) => this.http.get(this._urlAccidentes).subscribe((
       res: any
     ) => {
-      if (res.successfull) carretera = res.data;
-      else carretera = null;
-      resolve(carretera);
+      carreteras = res;
+      resolve(carreteras);
+    }));
+  }
+
+  async buscarAccidente(nombreCarretera: string): Promise<Carretera | null> {
+    var carretera: Carretera | null;
+    return new Promise<Carretera | null>((resolve) => this.http.get(this._urlBusquedaAccidentes + nombreCarretera).subscribe((
+      res: any
+    ) => {
+      if (res == '[]') resolve(null);
+      else {
+        carretera = res[0];
+        resolve(carretera);
+      }
     }));
   }
 
