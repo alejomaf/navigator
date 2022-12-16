@@ -10,7 +10,7 @@ pip install lxml
 pip install html.parser
 
 echo "Descargando todas las dependencias para Node JS"
-npm install navigator
+npm install navigator/
 
 echo "Levantando API"
 /usr/bin/python3 API/main.py &

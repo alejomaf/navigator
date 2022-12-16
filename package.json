@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "navigator": "^1.0.1"
+    "navigator": "file:navigator"
   }
 }
