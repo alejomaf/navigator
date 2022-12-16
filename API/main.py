@@ -78,7 +78,7 @@ def get_tweets_carretera(id: str):
     return {'tweet_score': len(tweets) / 10}
 
 
-@app.get("/info-historico/")
+@app.get("/info-historico")
 def get_historico():
     client = MongoClient(MONGODB_CONNECTION_STRING)
     db = client['opendata']

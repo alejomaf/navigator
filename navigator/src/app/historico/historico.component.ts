@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Carretera } from 'src/interfaces/carretera';
+import { Historico } from 'src/interfaces/historico';
 import { CarreteraService } from 'src/services/carretera.service';
 
 @Component({
@@ -8,11 +9,11 @@ import { CarreteraService } from 'src/services/carretera.service';
   styleUrls: ['./historico.component.css']
 })
 export class HistoricoComponent {
-  accidentes: Carretera[] | null | undefined;
+  historicos: Historico[] | null | undefined;
 
   constructor(private carreteraService: CarreteraService) {
     carreteraService.getHistoricoAccidentes().then((value) => {
-      this.accidentes = value;
+      this.historicos = value;
     });
   }
 }

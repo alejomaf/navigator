@@ -1,3 +1,3 @@
 export interface Tweets {
-    tweetScore: string
+    tweet_score: string
 }

@@ -11,7 +11,7 @@ import { CarreteraService } from 'src/services/carretera.service';
 })
 export class NavegaComponent {
   busqueda = new FormControl();
-  tweets: Tweets = { tweetScore: "0" };
+  tweets: Tweets = { tweet_score: "0" };
   accidente: Carretera = { advertencia: "", carretera: "", descripcion: "", kmDestino: "", kmOrigen: "", sentido: "" };
 
 
@@ -26,7 +26,7 @@ export class NavegaComponent {
       } else {
         this.accidente = value;
         this.carreteraService.getNumberOfTweets(this.busqueda.value).then((value) => {
-          this.tweets = value ?? 0;
+          this.tweets = value ?? { tweet_score: 0 };
         });
       }
 

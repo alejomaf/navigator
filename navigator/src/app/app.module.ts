@@ -11,6 +11,7 @@ import { CarreteraComponent } from './navega/carretera/carretera.component';
 import { AccidentesComponent } from './accidentes/accidentes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HistoricoComponent } from './historico/historico.component';
+import { HistoricoElementComponent } from './historico/historico-element/historico-element.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HistoricoComponent } from './historico/historico.component';
     CarreteraComponent,
     AccidentesComponent,
     HistoricoComponent,
+    HistoricoElementComponent,
   ],
   imports: [
     BrowserModule,

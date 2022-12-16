@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Carretera } from 'src/interfaces/carretera';
 import { Tweets } from 'src/interfaces/tweets';
+import { Historico } from 'src/interfaces/historico';
 
 @Injectable({
   providedIn: 'root'
@@ -48,13 +49,13 @@ export class CarreteraService {
     }));
   }
 
-  async getHistoricoAccidentes(): Promise<Carretera[] | null> {
-    var carreteras: Carretera[] | null;
-    return new Promise<Carretera[] | null>((resolve) => this.http.get(this._urlHistoricoAccidentes).subscribe((
+  async getHistoricoAccidentes(): Promise<Historico[] | null> {
+    var historicos: Historico[] | null;
+    return new Promise<Historico[] | null>((resolve) => this.http.get(this._urlHistoricoAccidentes).subscribe((
       res: any
     ) => {
-      carreteras = res;
-      resolve(carreteras);
+      historicos = res;
+      resolve(historicos);
     }));
   }
 
