@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Carretera } from 'src/interfaces/carretera';
+import { Tweets } from 'src/interfaces/tweets';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,9 @@ import { Carretera } from 'src/interfaces/carretera';
 export class CarreteraService {
 
   _urlAccidentes = "info-incidentes"
+  _urlHistoricoAccidentes = "info-historico"
   _urlBusquedaAccidentes = "info-incidentes/carretera/"
+  _urlBusquedaNumeroTweets = "info-twitter/carretera/"
 
   constructor(private http: HttpClient) { }
 
@@ -32,6 +35,26 @@ export class CarreteraService {
         carretera = res[0];
         resolve(carretera);
       }
+    }));
+  }
+
+  async getNumberOfTweets(nombreCarretera: string): Promise<Tweets> {
+    var tweets: Tweets;
+    return new Promise<Tweets>((resolve) => this.http.get(this._urlBusquedaNumeroTweets + nombreCarretera).subscribe((
+      res: any
+    ) => {
+      tweets = res;
+      resolve(tweets);
+    }));
+  }
+
+  async getHistoricoAccidentes(): Promise<Carretera[] | null> {
+    var carreteras: Carretera[] | null;
+    return new Promise<Carretera[] | null>((resolve) => this.http.get(this._urlHistoricoAccidentes).subscribe((
+      res: any
+    ) => {
+      carreteras = res;
+      resolve(carreteras);
     }));
   }
 

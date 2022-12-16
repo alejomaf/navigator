@@ -12,4 +12,5 @@ export class CarreteraComponent {
   @Input() sentido: string | undefined;
   @Input() descripcion: string | undefined;
   @Input() advertencia: string | undefined;
+  @Input() tweets: string | undefined;
 }

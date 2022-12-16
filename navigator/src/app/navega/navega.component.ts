@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Carretera } from 'src/interfaces/carretera';
+import { Tweets } from 'src/interfaces/tweets';
 import { CarreteraService } from 'src/services/carretera.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { CarreteraService } from 'src/services/carretera.service';
 })
 export class NavegaComponent {
   busqueda = new FormControl();
+  tweets: Tweets = { tweetScore: "0" };
   accidente: Carretera = { advertencia: "", carretera: "", descripcion: "", kmDestino: "", kmOrigen: "", sentido: "" };
 
 
@@ -19,7 +21,15 @@ export class NavegaComponent {
   buscarCarretera() {
     if (this.busqueda.value == "") return;
     this.carreteraService.buscarAccidente(this.busqueda.value).then((value) => {
-      this.accidente = value ?? { advertencia: "", carretera: "Carretera no encontrada", descripcion: "", kmDestino: "", kmOrigen: "", sentido: "" };
+      if (value == null) {
+        this.accidente = { advertencia: "", carretera: "Carretera no encontrada", descripcion: "", kmDestino: "", kmOrigen: "", sentido: "" };
+      } else {
+        this.accidente = value;
+        this.carreteraService.getNumberOfTweets(this.busqueda.value).then((value) => {
+          this.tweets = value ?? 0;
+        });
+      }
+
     });
   }
 }

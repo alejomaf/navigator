@@ -1,0 +1,16 @@
+<div class="d-flex flex-wrap align-content-stretch" style="margin-left: 7%; margin-right: 7%; margin-top: 1%;">
+    <div *ngFor="let accidente of accidentes">
+        <div class="d-flex justify-content-center my-3">
+            <app-carretera carretera='{{accidente.carretera}}' kmOrigen='{{accidente.kmOrigen}}'
+                kmDestino='{{accidente.kmDestino}}' sentido='{{accidente.sentido}}'
+                descripcion='{{accidente.descripcion}}' advertencia='{{accidente.advertencia}}'></app-carretera>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="accidentes==undefined" class="d-flex flex-wrap align-content-stretch"
+    style="margin-left: 7%; margin-right: 7%; margin-top: 1%;">
+    <div class="d-flex justify-content-center my-3">
+        <app-carretera carretera='No hay elementos en el histórico'></app-carretera>
+    </div>
+</div>

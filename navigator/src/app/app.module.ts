@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarreteraComponent } from './navega/carretera/carretera.component';
 import { AccidentesComponent } from './accidentes/accidentes.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HistoricoComponent } from './historico/historico.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PrecioCombustibleComponent,
     CarreteraComponent,
     AccidentesComponent,
+    HistoricoComponent,
   ],
   imports: [
     BrowserModule,

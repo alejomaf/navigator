@@ -1,10 +1,11 @@
 <div class="card m-1" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title">{{carretera}}</h5>
-        <p class="card-text">Kilómetro origen: {{kmOrigen}}</p>
-        <p class="card-text">Kilómetro destino: {{kmDestino}}</p>
-        <p class="card-text">Sentido: {{sentido}}</p>
-        <p class="card-text">Descripción del accidente: {{descripcion}}</p>
-        <p class="card-text">Consecuencias: {{advertencia}}</p>
+        <p *ngIf="kmOrigen" class="card-text">Kilómetro origen: {{kmOrigen}}</p>
+        <p *ngIf="kmDestino" class="card-text">Kilómetro destino: {{kmDestino}}</p>
+        <p *ngIf="sentido" class="card-text">Sentido: {{sentido}}</p>
+        <p *ngIf="descripcion" class="card-text">Descripción del accidente: {{descripcion}}</p>
+        <p *ngIf="advertencia" class="card-text">Consecuencias: {{advertencia}}</p>
+        <p *ngIf="tweets" class="card-text">Número de tweets: </p>
     </div>
 </div>
