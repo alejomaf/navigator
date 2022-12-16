@@ -1,11 +1,14 @@
 from fastapi import FastAPI
 import uvicorn
 import json
+from pymongo import MongoClient
 
 # import the wrappers
 import wrappers.gasolina as gasolina
 import wrappers.twitterWrapper as twitterWrapper
 import wrappers.incidentesWrapper as incidentesW
+
+MONGODB_CONNECTION_STRING = 'mongodb://localhost:27017'
 
 
 app = FastAPI(title="API de datos masivos encadenados",
@@ -66,6 +69,35 @@ def get_incidentes_carretera(id: str):
         if each["carretera"] == id:
             list_result.append(each)
     return list_result
+
+
+@app.get("/info-twitter/carretera/{id}")
+def get_tweets_carretera(id: str):
+    tweets = twitterWrapper.twitter_search_recent_tweets(id, 7)
+
+    return {'tweet_score': len(tweets) / 10}
+
+
+@app.get("/info-historico/")
+def get_historico():
+    client = MongoClient(MONGODB_CONNECTION_STRING)
+    db = client['opendata']
+    collection = db['data']
+    cursor = collection.find({})
+    fields = ['carretera', 'autonomia', 'causa', 'nivel', 'tipo']
+    docs = [{field: doc[field] for field in fields} for doc in cursor]
+    return docs
+
+
+@app.get("/info-historico/carretera/{id}")
+def get_historico_carretera(id: str):
+    client = MongoClient(MONGODB_CONNECTION_STRING)
+    db = client['opendata']
+    collection = db['data']
+    cursor = collection.find({'carretera': id.upper()})
+    fields = ['carretera', 'autonomia', 'causa', 'nivel', 'tipo']
+    docs = [{field: doc[field] for field in fields} for doc in cursor]
+    return docs
 
 
 if __name__ == "__main__":

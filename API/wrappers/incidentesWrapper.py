@@ -11,8 +11,11 @@ import re
 def extractData():
     websiteURL = 'https://infocar.dgt.es/etraffic/Incidencias?caracter=acontecimiento&orden=fechahora_ini%20DESC&IncidenciasOTROS=IncidenciasOTROS&IncidenciasEVENTOS=IncidenciasEVENTOS&IncidenciasRETENCION=IncidenciasRETENCION&IncidenciasPUERTOS=IncidenciasPUERTOS&IncidenciasMETEOROLOGICA=IncidenciasMETEOROLOGICA&IncidenciasRESTRICCIONES=IncidenciasRESTRICCIONES'
 
-    response = requests.get(websiteURL, timeout=0.10)
+    response = requests.get(websiteURL, timeout=3)
     print(response)
+
+    while response.status_code == 500:
+        response = requests.get(websiteURL, timeout=5)
 
     if response.status_code != 200:
         print("Fallo en la petición, abortando consulta")

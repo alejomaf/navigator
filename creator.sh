@@ -8,9 +8,13 @@ pip install tweepy
 pip install requests
 pip install lxml
 pip install html.parser
+pip install pymongo
 
 echo "Descargando todas las dependencias para Node JS"
 npm install --prefix ./navigator
+
+echo "Poblando base de datos"
+/usr/bin/python3 ETL/opendata.py
 
 echo "Levantando API"
 /usr/bin/python3 API/main.py &
